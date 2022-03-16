@@ -245,6 +245,7 @@ disable_at_mail: false
 #   email_push_address - if enabled, address to send all images to
 #   enable_email_schedule_push - whether to email an image of the nightly-created
 #       pass-list schedule to the email destination
+#   enable_ftp_push - wether to push images to a FTP server
 #   enable_discord_push - whether to push images to a Discord channel
 #   discord_webhook_url - webhook url for the Discord channel
 #   enable_twitter_push - whether to push images to a Twitter feed
@@ -254,8 +255,12 @@ disable_at_mail: false
 enable_email_push: false
 email_push_address: test@ifttt.com
 enable_email_schedule_push: false
-enable_discord_push: false
-discord_webhook_url: ''
+enable_ftp_push: true
+ftp_server: 'example.com'
+ftp_user: 'user'
+ftp_passwd: '1234'
+enable_discord_push: true
+discord_webhook_url: 'https://discord.com/api/webhooks/953625600587870218/jjS2TiEj-KDavz-9eB_8u1gAgJ32R80gXZM9_zoUD40TJP1FLtu_qjoxbcHTnw4aIg1l'
 enable_twitter_push: false
 enable_slack_push: false
 slack_push_url: ''

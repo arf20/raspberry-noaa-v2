@@ -350,6 +350,12 @@ for enhancement in $ENHANCEMENTS; do
           log "Pushing image enhancement $enhancement to Discord" "INFO"
           ${PUSH_PROC_DIR}/push_discord.sh "${IMAGE_FILE_BASE}-$enhancement.jpg" "${push_annotation}" >> $NOAA_LOG 2>&1
         fi
+
+	if [ "${ENABLE_FTP_PUSH}" == "true" ]; then
+	  log "Pushing image enhancement $enhancement to FTP" "INFO"
+	  ${PUSH_PROC_DIR}/push_ftp.sh ${FTP_SERVER} ${FTP_USER} ${FTP_PASSWD} "${IMAGE_FILE_BASE}-$enhancement.jpg" >> $NOAA_LOG 2>&1
+	fi
+
       else
         log "No image with enhancement $enhancement created - not pushing anywhere" "INFO"
         rm "${IMAGE_FILE_BASE}-$enhancement.jpg"
