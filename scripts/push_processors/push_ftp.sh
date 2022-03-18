@@ -27,7 +27,7 @@ FILE=$4
 # check that the file exists and is accessible
 if [ -f "${FILE}" ]; then 
   log "Uploading $FILE to FTP $SERVER" "INFO"
-  email_log=$(curl --upload-file ${FILE} ftp://${USER}:${PASSWD}@${SERVER}/ 2>&1)
+  email_log=$(curl -P - --upload-file ${FILE} ftp://${USER}:${PASSWD}@${SERVER}/ 2>&1)
   log "${email_log}" "INFO"
 else
   log "Could not find or access image/attachment - not uploading to FTP server" "ERROR"
