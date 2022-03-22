@@ -363,6 +363,19 @@ elif [ "$METEOR_RECEIVER" == "gnuradio" ]; then
       fi
     fi
 
+    if [ "${ENABLE_FTP_PUSH}" == "true" ]; then
+       log "Pushing image enhancement $enhancement to FTP" "INFO"
+       if [ -f "${IMAGE_FILE_BASE}-122-rectified.jpg" ]; then
+         ${PUSH_PROC_DIR}/push_ftp.sh ${FTP_SERVER} ${FTP_USER} ${FTP_PASSWD} "${IMAGE_FILE_BASE}-122-rectified.jpg" >> $NOAA_LOG 2>&1
+       fi
+       if [ -f "${IMAGE_FILE_BASE}-ir-122-rectified.jpg" ]; then
+         ${PUSH_PROC_DIR}/push_ftp.sh ${FTP_SERVER} ${FTP_USER} ${FTP_PASSWD} "${IMAGE_FILE_BASE}-ir-122-rectified.jpg" >> $NOAA_LOG 2>&1
+       fi
+       if [ -f "${IMAGE_FILE_BASE}-col-122-rectified.jpg" ]; then
+         ${PUSH_PROC_DIR}/push_ftp.sh ${FTP_SERVER} ${FTP_USER} ${FTP_PASSWD} "${IMAGE_FILE_BASE}-col-122-rectified.jpg" >> $NOAA_LOG 2>&1
+       fi
+    fi
+
     if [ "${ENABLE_DISCORD_PUSH}" == "true" ]; then
       log "Pushing images to Discord" "INFO"
       if [ -f "${IMAGE_FILE_BASE}-122-rectified.jpg" ]; then
